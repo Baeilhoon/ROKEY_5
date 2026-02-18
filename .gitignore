@@ -1,0 +1,59 @@
+# ROS2 & Build Files
+build/
+install/
+log/
+devel/
+*.egg-info/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+
+# ROS Specific
+*.deb
+*.tar.gz
+*.whl
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Simulator
+gazebo.log
+gazebo_client.log
+gazebo_server.log
+*.db
+
+# Data & Logs
+logs/
+*.log
+data/
+tmp/
+temp/
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.bak
