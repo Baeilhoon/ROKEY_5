@@ -47,107 +47,21 @@
 
 ---
 
-## 🏭 Project 1: 컨베이어벨트 자동화 공정 제어 시스템
+## 📖 프로젝트 상세 정보
 
-> **ROS2 기반 로봇팔 연동 자동화 시스템**
+각 프로젝트의 **기술 스택, 문제 해결, 아키텍처**는 각 폴더의 README에서 확인할 수 있습니다:
 
-### 🎯 핵심 성과
+- **🏭 [Project 1: 컨베이어벨트 자동화](project1_conveyor_belt/README.md)** 
+  - ROS2 기반 로봇팔 연동 | 기여도 30% | Arduino 펌웨어 + ROS2 브릿지
 
-- ✅ **상태 머신 기반 제어**: `IDLE / MOVING / WAITING / EMERGENCY` 4단계 상태 관리
-- ✅ **노이즈 제거**: 디바운싱 로직으로 IR 센서 중복 이벤트 제거
-- ✅ **동기화 메커니즘**: 우선순위 ACK 구조로 로봇팔과의 동기화 안정화
-- ✅ **실시간 모니터링**: Firebase 기반 공정 상태 가시화
+- **🤖 [Project 2: SLAM 자율주행 로봇](project2_slam_robot/README.md)** 
+  - MCU 펌웨어 상태 관리 | 기여도 20% | 그리퍼 제어 시스템
 
-### 🔧 기술 스택  
-`ROS2 Humble` · `C++` · `Arduino` · `IR Sensor` · `Step Motor` · `Flask` · `Firebase`
+- **🎯 [Project 3: LLM 협동로봇](project3_multimodal_llm/README.md)** 
+  - AI Vision 파이프라인 | 팀 프로젝트 | Webcam 인식 시스템
 
-### 🚀 주요 성과
-
-| 문제 | 해결 |
-|------|------|
-| IR 센서 노이즈 | 디바운싱 + 이벤트 단일화 |
-| 제어 명령 충돌 | 상태 기반 우선순위 ACK 구조 |
-| ROS2-Arduino 지연 | 브릿지 노드 분리 + 명령 큐 구조 |
-
-**📖 [상세 설명서 보기](project1_conveyor_belt/README.md)**
-
----
-
-## 🤖 Project 2: SLAM 기반 자율주행 로봇 시스템
-
-> **MCU 펌웨어 상태 관리 & 제어 흐름 안정성 검증**
-
-### 🎯 핵심 성과
-
-- ✅ **상태 기반 펌웨어**: State-driven 구조로 재초기화 버그 제거
-- ✅ **EEPROM 활용**: 전원 재시작 후에도 마지막 상태 복원
-- ✅ **안정적 상태 전환**: 명시적 상태 전환 로직으로 오동작 방지
-- ✅ **제어 흐름 검증**: `PC → TurtleBot3 → Arduino` 명확한 경로 설계
-
-### 🔧 기술 스택  
-`ROS2 Humble` · `Python` · `Arduino (C++)` · `TurtleBot3` · `Servo Motor` · `EEPROM` · `SLAM`
-
-### 🚀 주요 해결 과제
-
-| 문제 | 해결 |
-|------|------|
-| 상태 재초기화 중복 | `setup()`에서만 초기화, `loop()`에서 배제 |
-| 그리퍼 의도치 않은 복귀 | State-Driven 구조로 명시적 전환만 처리 |
-| 전원 재시작 시 상태 유실 | EEPROM에 마지막 위치/상태 저장 후 복원 |
-
-**📖 [상세 설명서 보기](project2_slam_robot/README.md)**
-
----
-
-## 🎯 Project 3: 멀티모달 LLM 협동로봇 지능제어 시스템
-
-> **AI 추론 결과 → ROS2 토픽 변환 → 로봇 동작 연동**
-
-### 🎯 핵심 성과
-
-- ✅ **신뢰도 필터링**: 낮은 확률(confidence < 0.7) 오인식 사전 차단
-- ✅ **연속 프레임 검증**: 3프레임 연속 동일 결과로 단일 프레임 오류 방지
-- ✅ **2단계 검증**: 초기 인식 + 작업 전 재검증으로 안정성 보장
-- ✅ **파이프라인 통합**: Vision → ROS2 → 로봇 스킬 실행까지 자동화
-
-### 🔧 기술 스택  
-`ROS2 Humble` · `Python` · `YOLO v8` · `OpenCV` · `Webcam` · `Doosan Robot (협동로봇)`
-
-### 🚀 주요 해결 과제
-
-| 문제 | 해결 |
-|------|------|
-| 인식 오류 오동작 | Confidence + 연속 프레임 + 중간 검증 3단계 |
-| 조명 변화 민감도 | 히스토그램 균등화 + CLAHE 정규화 |
-| 타이밍 미스매치 | 상태 머신 기반 제어 흐름 |
-
-**📖 [상세 설명서 보기](project3_multimodal_llm/README.md)**
-
----
-
-## 🚀 Project 4: 디지털트윈 기반 TIAGo 자율배달로봇
-
-> **ROS2 Nav2 + Vision + 시뮬레이터 통합 시스템**
-
-### 🎯 핵심 성과
-
-- ✅ **CPU 병목 해결**: 기능 선택적 구동으로 시스템 안정성 30% 개선
-- ✅ **Nav2 완전 구현**: AMCL + 로컬 경로 계획 + DWB
-- ✅ **QR 기반 배달**: QR 인식 후 목표 위치 자동 노비게이션
-- ✅ **시뮬레이션 검증**: Gazebo 환경에서 실제처럼 동작
-
-### 🔧 기술 스택  
-`ROS2 Humble` · `Python` · `Nav2` · `YOLO` · `OpenCV` · `Gazebo` · `TIAGo` · `LiDAR`
-
-### 🚀 주요 해결 과제
-
-| 문제 | 해결 |
-|------|------|
-| FPS 저하/주행 지연 | 기능 선택적 구동 + 우선순위 큐 |
-| 경로 최적화 부족 | NavFn 플래너 + A* 알고리즘 |
-| QR 방향 불안정 | QR의 orientation 추출 및 반영 |
-
-**📖 [상세 설명서 보기](project4_tiago_delivery/README.md)**
+- **🚀 [Project 4: TIAGo 자율배달로봇](project4_tiago_delivery/README.md)** 
+  - ROS2 Nav2 자율주행 | 팀 프로젝트 | 객체/QR 인식 통합
 
 ---
 
